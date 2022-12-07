@@ -1,9 +1,9 @@
-import os
-from imbox import Imbox # pip install imbox
-import traceback,time,random
-import pandas as pd
+import os, time 
+import traceback
 import numpy as np
+import pandas as pd
 from tqdm import tqdm
+from imbox import Imbox
 
 ######################################################################################
 ### Utilities
@@ -96,7 +96,8 @@ def run_save(host:str, userId:str, pwd:str, parent_path:str,path_to_save_email_c
                     data.extend(temp_attach_list)
                 else:
                     temp.append("no attachments")
-                    data.append(temp)  
+                    data.append(temp)
+            time.sleep(0.5)
         create_csv(data,csv_file_location)         
     except:
         print(traceback.print_exc())
@@ -108,8 +109,8 @@ if __name__ == "__main__":
     ### Configuration
     ######################################################################################
     HOST = "imap.gmail.com" # using google's gmail her which can be changed.
-    USER_ID = "sreekanth.aie.p@gmail.com" #"**configure**" # Gmail Id.
-    PWD = 'qjpljywgiiwzetmq' #"**configure**" # after two-step verification, the app password should be used not the original one.
+    USER_ID = "**configure**" # Gmail Id.
+    PWD = "**configure**" # after two-step verification, the app password should be used not the original one.
 
     # path to save email content, attachment files, csv file.
     PARENT_PATH = "Storage" # we can write any name here for parent directory, which will be created
@@ -131,11 +132,5 @@ if __name__ == "__main__":
 
 
 
-# # ...
-# # import ssl
-    
-# # context = ssl._create_unverified_context()
-# # mail = Imbox_session(host, username=username, password=password, ssl=True, ssl_context=context, starttls=False)
-# # ...
 
 
